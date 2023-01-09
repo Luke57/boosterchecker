@@ -25,7 +25,7 @@ while True:
 	final = requests.get(f"https://user-api.coronatest.nl/vaccinatie/programma/booster/{LAST_ITEM}/NEE")
 	final_response = final.json()
 
-	if final_response["success"] is True:
+	if final_response["success"]:
 		text = f"Geboortejaar {LAST_ITEM} {OVERIGE_TEXT}"
 		message = f"https://api.telegram.org/bot{API_KEY}/sendMessage?chat_id={GROUP_ID}&text={text}"
 		requests.get(message)
@@ -37,7 +37,7 @@ while True:
 			request = requests.get(f"https://user-api.coronatest.nl/vaccinatie/programma/booster/{year}/NEE")
 			response = request.json()
 
-			if response['success'] is True:
+			if response['success']:
 				text = f"Geboortejaar {year} {OVERIGE_TEXT}"
 				message = f"https://api.telegram.org/bot{API_KEY}/sendMessage?chat_id={GROUP_ID}&text={text}"
 				requests.get(message)
